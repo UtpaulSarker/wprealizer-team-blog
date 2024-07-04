@@ -1,7 +1,7 @@
 <?php
 /*
 Template Name: Home Content
-*/
+ */
 get_header();
 ?>
 
@@ -16,8 +16,32 @@ get_header();
 <div class="col-lg-8 top-post-left">
 <div class="feature-image-thumb relative">
 <div class="overlay overlay-bg"></div>
-<img class="img-fluid" src="<?php echo get_template_directory_uri(  );?>/img/top-post1.jpg" alt>
+<?php
+$args = array(
+    'post_type' => 'post', // Fetch posts
+    'posts_per_page' => 1, // Number of posts to fetch
+    'order' => 'DESC', // Order by descending (latest first)
+);
+
+$query = new WP_Query($args);
+
+if ($query->have_posts()) {
+    while ($query->have_posts()) {
+        $query->the_post();
+        ?>
+        <?php
+
+        ?>
+
+ <?php the_post_thumbnail('thumbnail', array('class' => 'img-fluid'));?>
+
 </div>
+<?php
+}
+    wp_reset_postdata(); // Restore global post data
+} else {
+    echo 'No posts found.';
+}?>
 <div class="top-post-details">
 <ul class="tags">
 <li><a href="#">Food Habit</a></li>
@@ -36,7 +60,7 @@ get_header();
 <div class="single-top-post">
 <div class="feature-image-thumb relative">
 <div class="overlay overlay-bg"></div>
-<img class="img-fluid" src="<?php echo get_template_directory_uri(  );?>/img/top-post2.jpg" alt>
+<img class="img-fluid" src="<?php echo get_template_directory_uri(); ?>/img/top-post2.jpg" alt>
 </div>
 <div class="top-post-details">
 <ul class="tags">
@@ -55,7 +79,7 @@ get_header();
 <div class="single-top-post mt-10">
 <div class="feature-image-thumb relative">
 <div class="overlay overlay-bg"></div>
-<img class="img-fluid" src="<?php echo get_template_directory_uri(  );?>/img/top-post3.jpg" alt>
+<img class="img-fluid" src="<?php echo get_template_directory_uri(); ?>/img/top-post3.jpg" alt>
 </div>
 <div class="top-post-details">
 <ul class="tags">
@@ -93,7 +117,7 @@ get_header();
 <div class="col-lg-5 post-left">
 <div class="feature-img relative">
 <div class="overlay overlay-bg"></div>
-<img class="img-fluid" src="<?php echo get_template_directory_uri(  );?>/img/l1.jpg" alt>
+<img class="img-fluid" src="<?php echo get_template_directory_uri(); ?>/img/l1.jpg" alt>
 </div>
 <ul class="tags">
 <li><a href="#">Lifestyle</a></li>
@@ -118,7 +142,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 <div class="col-lg-5 post-left">
 <div class="feature-img relative">
 <div class="overlay overlay-bg"></div>
-<img class="img-fluid" src="<?php echo get_template_directory_uri(  );?>/img/l2.jpg" alt>
+<img class="img-fluid" src="<?php echo get_template_directory_uri(); ?>/img/l2.jpg" alt>
 </div>
 <ul class="tags">
 <li><a href="#">Science</a></li>
@@ -143,7 +167,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 <div class="col-lg-5 post-left">
 <div class="feature-img relative">
 <div class="overlay overlay-bg"></div>
-<img class="img-fluid" src="<?php echo get_template_directory_uri(  );?>/img/l3.jpg" alt>
+<img class="img-fluid" src="<?php echo get_template_directory_uri(); ?>/img/l3.jpg" alt>
 </div>
 <ul class="tags">
 <li><a href="#">Travel</a></li>
@@ -168,7 +192,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 <div class="col-lg-5 post-left">
 <div class="feature-img relative">
 <div class="overlay overlay-bg"></div>
-<img class="img-fluid" src="<?php echo get_template_directory_uri(  );?>/img/l4.jpg" alt>
+<img class="img-fluid" src="<?php echo get_template_directory_uri(); ?>/img/l4.jpg" alt>
 </div>
 <ul class="tags">
 <li><a href="#">Fashion</a></li>
@@ -193,7 +217,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 
 <div class="col-lg-12 ad-widget-wrap mt-30 mb-30">
-<img class="img-fluid" src="<?php echo get_template_directory_uri(  );?>/img/banner-ad.jpg" alt>
+<img class="img-fluid" src="<?php echo get_template_directory_uri(); ?>/img/banner-ad.jpg" alt>
 </div>
 
 
@@ -202,7 +226,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 <div class="feature-post relative">
 <div class="feature-img relative">
 <div class="overlay overlay-bg"></div>
-<img class="img-fluid" src="<?php echo get_template_directory_uri(  );?>/img/f1.jpg" alt>
+<img class="img-fluid" src="<?php echo get_template_directory_uri(); ?>/img/f1.jpg" alt>
 </div>
 <div class="details">
 <ul class="tags">
@@ -223,7 +247,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 <div class="feature-img-wrap relative">
 <div class="feature-img relative">
 <div class="overlay overlay-bg"></div>
-<img class="img-fluid" src="<?php echo get_template_directory_uri(  );?>/img/f2.jpg" alt>
+<img class="img-fluid" src="<?php echo get_template_directory_uri(); ?>/img/f2.jpg" alt>
 </div>
 <ul class="tags">
 <li><a href="#">Travel</a></li>
@@ -248,7 +272,7 @@ Lorem ipsum dolor sit amet, consecteturadip isicing elit, sed do eiusmod tempor 
 <div class="feature-img-wrap relative">
 <div class="feature-img relative">
 <div class="overlay overlay-bg"></div>
-<img class="img-fluid" src="<?php echo get_template_directory_uri(  );?>/img/f3.jpg" alt>
+<img class="img-fluid" src="<?php echo get_template_directory_uri(); ?>/img/f3.jpg" alt>
 </div>
 <ul class="tags">
 <li><a href="#">Travel</a></li>
@@ -280,7 +304,7 @@ Lorem ipsum dolor sit amet, consecteturadip isicing elit, sed do eiusmod tempor 
 <div class="col-lg-5 post-left">
 <div class="feature-img relative">
 <div class="overlay overlay-bg"></div>
-<img class="img-fluid" src="<?php echo get_template_directory_uri(  );?>/img/r1.jpg" alt>
+<img class="img-fluid" src="<?php echo get_template_directory_uri(); ?>/img/r1.jpg" alt>
 </div>
 <ul class="tags">
 <li><a href="#">Lifestyle</a></li>
@@ -305,7 +329,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 <div class="col-lg-5 post-left">
 <div class="feature-img relative">
 <div class="overlay overlay-bg"></div>
-<img class="img-fluid" src="<?php echo get_template_directory_uri(  );?>/img/r2.jpg" alt>
+<img class="img-fluid" src="<?php echo get_template_directory_uri(); ?>/img/r2.jpg" alt>
 </div>
 <ul class="tags">
 <li><a href="#">Science</a></li>
@@ -330,7 +354,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 <div class="col-lg-5 post-left">
 <div class="feature-img relative">
 <div class="overlay overlay-bg"></div>
-<img class="img-fluid" src="<?php echo get_template_directory_uri(  );?>/img/r3.jpg" alt>
+<img class="img-fluid" src="<?php echo get_template_directory_uri(); ?>/img/r3.jpg" alt>
 </div>
 <ul class="tags">
 <li><a href="#">Travel</a></li>
@@ -363,7 +387,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 <div class="feature-img-wrap relative">
 <div class="feature-img relative">
 <div class="overlay overlay-bg"></div>
-<img class="img-fluid" src="<?php echo get_template_directory_uri(  );?>/img/e1.jpg" alt>
+<img class="img-fluid" src="<?php echo get_template_directory_uri(); ?>/img/e1.jpg" alt>
 </div>
 <ul class="tags">
 <li><a href="#">Travel</a></li>
@@ -386,7 +410,7 @@ Lorem ipsum dolor sit amet, consecteturadip isicing elit, sed do eiusmod tempor 
 <div class="post-lists">
 <div class="single-post d-flex flex-row">
 <div class="thumb">
-<img src="<?php echo get_template_directory_uri(  );?>/img/e2.jpg" alt>
+<img src="<?php echo get_template_directory_uri(); ?>/img/e2.jpg" alt>
 </div>
 <div class="detail">
 <a href="image-post.html"><h6>Help Finding Information
@@ -399,7 +423,7 @@ Online is so easy</h6></a>
 </div>
 <div class="single-post d-flex flex-row">
 <div class="thumb">
-<img src="<?php echo get_template_directory_uri(  );?>/img/e3.jpg" alt>
+<img src="<?php echo get_template_directory_uri(); ?>/img/e3.jpg" alt>
 </div>
 <div class="detail">
 <a href="image-post.html"><h6>Compatible Inkjet Cartr
@@ -412,7 +436,7 @@ world famous</h6></a>
 </div>
 <div class="single-post d-flex flex-row">
 <div class="thumb">
-<img src="<?php echo get_template_directory_uri(  );?>/img/e4.jpg" alt>
+<img src="<?php echo get_template_directory_uri(); ?>/img/e4.jpg" alt>
 </div>
 <div class="detail">
 <a href="image-post.html"><h6>5 Tips For Offshore Soft
@@ -427,7 +451,7 @@ Development </h6></a>
 </div>
 </div>
 <div class="single-sidebar-widget ads-widget">
-<img class="img-fluid" src="<?php echo get_template_directory_uri(  );?>/img/sidebar-ads.jpg" alt>
+<img class="img-fluid" src="<?php echo get_template_directory_uri(); ?>/img/sidebar-ads.jpg" alt>
 </div>
 <div class="single-sidebar-widget newsletter-widget">
 <h6 class="title">Newsletter</h6>
@@ -452,7 +476,7 @@ You can unsubscribe us at any time
 <h6 class="title">Most Popular</h6>
 <div class="single-list flex-row d-flex">
 <div class="thumb">
-<img src="<?php echo get_template_directory_uri(  );?>/img/m1.jpg" alt>
+<img src="<?php echo get_template_directory_uri(); ?>/img/m1.jpg" alt>
 </div>
 <div class="details">
 <a href="image-post.html">
@@ -467,7 +491,7 @@ Online is so easy</h6>
 </div>
 <div class="single-list flex-row d-flex">
 <div class="thumb">
-<img src="<?php echo get_template_directory_uri(  );?>/img/m2.jpg" alt>
+<img src="<?php echo get_template_directory_uri(); ?>/img/m2.jpg" alt>
 </div>
 <div class="details">
 <a href="image-post.html">
@@ -482,7 +506,7 @@ world famous</h6>
 </div>
 <div class="single-list flex-row d-flex">
 <div class="thumb">
-<img src="<?php echo get_template_directory_uri(  );?>/img/m3.jpg" alt>
+<img src="<?php echo get_template_directory_uri(); ?>/img/m3.jpg" alt>
 </div>
 <div class="details">
 <a href="image-post.html">
@@ -497,7 +521,7 @@ Development </h6>
 </div>
 <div class="single-list flex-row d-flex">
 <div class="thumb">
-<img src="<?php echo get_template_directory_uri(  );?>/img/m4.jpg" alt>
+<img src="<?php echo get_template_directory_uri(); ?>/img/m4.jpg" alt>
 </div>
 <div class="details">
 <a href="image-post.html">

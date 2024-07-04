@@ -1,5 +1,6 @@
 <?php
 
 
-dynamic_sidebar('footer-1');
+//dynamic_sidebar('resources');
+
 ?>

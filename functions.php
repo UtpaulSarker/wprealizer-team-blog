@@ -1,4 +1,11 @@
 <?php
+//theme function
+include_once 'inc/theme_function.php';
+
+//include footer widgets function
+
+include_once 'inc/widget_footer.php';
+
 //All enqueue Function here
 function u_css_js_file_calling()
 {
@@ -22,6 +29,8 @@ function u_css_js_file_calling()
     wp_register_style('jquery-ui', get_template_directory_uri() . '/css/jquery-ui.css', array(), '1.0.0', 'all');
 
     wp_register_style('main', get_template_directory_uri() . '/css/main.css', array(), '1.0.0', 'all');
+
+    wp_enqueue_style('linearicon','https://cdn.jsdelivr.net/npm/linearicons@1.0.2/dist/web-font/style.min.css');
     
     wp_enqueue_style('linearicons');
     wp_enqueue_style('font-awesome');
@@ -44,6 +53,8 @@ function u_css_js_file_calling()
     wp_enqueue_script('cdn','https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js');
 
     wp_enqueue_script('map','https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA');
+
+    wp_enqueue_script('linearicons','https://cdn.jsdelivr.net/npm/linearicons@1.0.2/package.min.js');
 
     
     wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/vendor/bootstrap.min.js');
@@ -87,19 +98,4 @@ add_action('wp_enqueue_scripts', 'u_add_google_fonts');
 register_nav_menu('main_menu', __('Main Menu', 'UtpaulSarker'));
 
 
-//widgets register
-
-function widgets_reg(){
-    register_sidebar(array(
-        'name'=>__('Main widgets area','UtpaulSarker'),
-        'id'=>'footer-1',
-        'description'=>__('this is the footer'),
-        'before_widget'=>'<div class="footer">',
-        'after_widget'=>'</div>',
-        'before_title'=>'<h2 class="title">',
-        'after_title'=>'</h2>',
-
-    ));
-}
-
-add_action('widgets_init','widgets_reg');
+add_theme_support( 'post-thumbnails' );
